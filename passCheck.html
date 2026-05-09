@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Password Checker</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-dark" style="font-family: 'Times New Roman', 'sans-serif';">
+<div class="card bg-dark text-white" style="min-height: 100vh;">
+
+
+    <video autoplay muted loop id="myVideo">
+        <source src="vid.mp4" type="video/mp4">
+    </video>
+
+
+    <div class="content">
+
+
+
+
+    <header>
+        <h1 class="text-center">[uni name] End-Of-Year Festival</h1>
+        <h1 class="text-center">CS<span>-CS</span></h1>
+        <p class="text-center">Interactive Cybersecurity Demonstrations</p>
+    </header>
+
+    <nav class="nav justify-content-center">
+        <div class="d-flex gap-2">
+            <button class="btn btn-light btn-sm"><a href="index.html">Home</a></button>
+            <button class="btn btn-light btn-sm"><a href="passCheck.html">Password Checker</a></button>
+            <button class="btn btn-light btn-sm"><a href="phishCheck.html">Phishing Quiz</a></button>
+            <button class="btn btn-light btn-sm"><a href="cryptoPuzzle.html">Cryptography Puzzle</a></button>
+        </div>
+    </nav>
+<h1>Password Strength Checker</h1>
+    <main class="container text-center mt-5">
+        <label for="passwordInput" class="form-label fs-4">
+            Please enter a password:
+        </label>
+
+        <input
+                type="text"
+                id="passwordInput"
+                class="form-control w-50 mx-auto"
+                placeholder="Enter password"
+        />
+
+        <button onclick="checkPassword()" class="btn btn-light mt-3">
+            Check Password
+        </button>
+
+        <div id="result" class="mt-4 fs-4"></div>
+    </main>
+    <footer  class="border-top text-center py-3 fs-6">
+        // [uni name]'S CS-CS DEPARTMENT, THIS WEBSITE IS HOSTED LOCALLY AND ONLY FOR THE DURATION OF THE FAIR. IF YOU WANT THE SOURCE CODE FOR IT AND DETAILS OF IT'S MAKING VISIT THE GITHUB REPO: //
+    </footer>
+</div>
+</div>
+<script>
+    const wordListFiles = [
+        "WordLists/rockyou.txt",
+        "WordLists/password.txt",
+        "WordLists/facebook_phished",
+        "WordLists/most_used_passwords.txt",
+        "WordLists/hotmail.txt",
+    ];
+
+    async function wordListCompare(password) {
+        let numTimesFound = 0;
+
+        for (const file of wordListFiles) {
+            try {
+                const response = await fetch(file);
+
+                if (!response.ok) {
+                    console.error("Could not load file:", file);
+                    continue;
+                }
+
+                const text = await response.text();
+                const lines = text.split(/\r?\n/);
+
+                for (const line of lines) {
+                    if (line.trim() === password) {
+                        numTimesFound++;
+                    }
+                }
+            } catch (error) {
+                console.error("Error reading file:", file, error);
+            }
+        }
+
+        return numTimesFound;
+    }
+
+    function attemptsCalculator(password) {
+        const size = password.length;
+
+        let numOfChars = 0;
+        let nums = false;
+        let charsCaps = false;
+        let charsSmall = false;
+        let symbols = false;
+
+        for (const c of password) {
+            if (/[0-9]/.test(c)) {
+                nums = true;
+            } else if (/[A-Z]/.test(c)) {
+                charsCaps = true;
+            } else if (/[a-z]/.test(c)) {
+                charsSmall = true;
+            } else {
+                symbols = true;
+            }
+        }
+
+        if (nums) numOfChars += 10;
+        if (charsCaps) numOfChars += 26;
+        if (charsSmall) numOfChars += 26;
+        if (symbols) numOfChars += 33;
+
+        return Math.pow(numOfChars, size);
+    }
+
+    async function checkPassword() {
+        const passwordInput = document.getElementById("passwordInput");
+        const result = document.getElementById("result");
+
+        const password = passwordInput.value;
+
+        if (password.length === 0) {
+            result.innerHTML = "Please enter a password.";
+            return;
+        }
+
+        const timesFound = await wordListCompare(password);
+        const attemptsNeeded = attemptsCalculator(password);
+
+        result.innerHTML = `
+        <p>Your password is: <strong>${password}</strong></p>
+        <p>Your password was found <strong>${timesFound}</strong> times in wordlists.</p>
+        <p>Your password needs <strong>${attemptsNeeded.toLocaleString()}</strong> attempts to be successfully cracked.</p>
+      `;
+    }
+</script>
+</body>
+</html>
