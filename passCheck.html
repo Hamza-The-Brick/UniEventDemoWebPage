@@ -23,7 +23,7 @@
 
 
     <header>
-        <h1 class="text-center">[uni name] End-Of-Year Festival</h1>
+        <h1 class="text-center">[UNI NAME] End-Of-Year Festival</h1>
         <h1 class="text-center">CS<span>-CS</span></h1>
         <p class="text-center">Interactive Cybersecurity Demonstrations</p>
     </header>
@@ -55,8 +55,32 @@
 
         <div id="result" class="mt-4 fs-4"></div>
     </main>
+        <section>
+            <h2>How Do Hackers Crack Passwords?</h2>
+            <p>
+                There are multiple ways to crack passwords. The most popular of which are the brute-force and Dictionary attacks.
+                Both of which involve a script that automates attempts, but in different ways.
+</p>
+            <h2>Brute-forcing</h2>
+            <p>
+                A brute-force attack tries every possible permutation of characters (which our strength checker calculates). However, don't let the big numbers fool you.
+                Some password crackers using powerful GPUs can run 100 billion attempts at once. Making cracking passwords incredibly easy if they're not secure.
+                It is calculated by (Number Of Possible Characters) to the power of (Length Of Password). If the length of the password is variable the add each permutation (i.e., 94^8 + 94^7 + etc...).
+                Also, keep in mind that the calculated number is the worst-case scenario. So something like 1234 has many combinations, but is usually the first guess, making it even more vulnerable than you might imagine initially.
+            </p>
+            <h2>Dictionary Attacks</h2>
+            <p>
+                Dictionary attacks are similar to brute-force attacks, as a huge number of attempts are done to get the correct password. However, instead of the slow and tedious attempts of every potential combination of inputs, word lists
+                that contain common passwords and passwords found in data breaches before. Dictionary attacks are a much faster way to crack a common/easy password and do not take nearly as much time.
+                Our calculator compares your input to a select number of word lists. If your password appears even once in a word list, you know it's horrendous and can be cracked in an instant.
+            </p>
+            <h2>Safety Measures You Can Take</h2>
+            <p>Always enable Multi-Factor Authentication, so even if your password gets cracked, the hacker cannot access your account. Regularly update your passwords and use strong ones with various combinations of characters to maximize the amount of time needed to crack your password.
+                Never EVER use simple passwords and always create something complex. Password managers are also good, or just do what I do: keep them in plain text somewhere that's well hidden away from everyone else.
+            </p>
+        </section>
     <footer  class="border-top text-center py-3 fs-6">
-        // [uni name]'S CS-CS DEPARTMENT, THIS WEBSITE IS HOSTED LOCALLY AND ONLY FOR THE DURATION OF THE FAIR. IF YOU WANT THE SOURCE CODE FOR IT AND DETAILS OF IT'S MAKING VISIT THE GITHUB REPO: //
+        // [UNI NAME]'S CS-CS DEPARTMENT, THIS WEBSITE IS HOSTED LOCALLY AND ONLY FOR THE DURATION OF THE FAIR. IF YOU WANT THE SOURCE CODE FOR IT AND DETAILS OF IT'S MAKING VISIT THE GITHUB REPO <a href = "https://github.com/Hamza-The-Brick/UniEventDemoWebPage">HERE</a>//
     </footer>
 </div>
 </div>
@@ -64,7 +88,7 @@
     const wordListFiles = [
         "WordLists/rockyou.txt",
         "WordLists/password.txt",
-        "WordLists/facebook_phished",
+        "WordLists/facebook_phished.txt",
         "WordLists/most_used_passwords.txt",
         "WordLists/hotmail.txt",
     ];
@@ -77,7 +101,7 @@
                 const response = await fetch(file);
 
                 if (!response.ok) {
-                    console.error("Could not load file:", file);
+                    console.error("Could not load file:", file, "Status:", response.status);
                     continue;
                 }
 
@@ -85,8 +109,9 @@
                 const lines = text.split(/\r?\n/);
 
                 for (const line of lines) {
-                    if (line.trim() === password) {
+                    if (line.trim() === password.trim()) {
                         numTimesFound++;
+                        break;
                     }
                 }
             } catch (error) {
@@ -136,6 +161,8 @@
             result.innerHTML = "Please enter a password.";
             return;
         }
+
+        result.innerHTML = "<p>Checking password...</p>";
 
         const timesFound = await wordListCompare(password);
         const attemptsNeeded = attemptsCalculator(password);

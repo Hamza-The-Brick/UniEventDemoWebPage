@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -17,7 +18,7 @@
     <div class="content">
 
     <header>
-        <h1 class="text-center">[uni name] End-Of-Year Festival</h1>
+        <h1 class="text-center">[UNI NAME]End-Of-Year Festival</h1>
         <h1 class="text-center">CS<span>-CS</span></h1>
         <p class="text-center">Interactive Cybersecurity Demonstrations</p>
     </header>
@@ -31,20 +32,96 @@
         </div>
     </nav>
 
-    <footer  class="border-top text-center py-3 fs-6">
-        // [uni name]'S CS-CS DEPARTMENT, THIS WEBSITE IS HOSTED LOCALLY AND ONLY FOR THE DURATION OF THE FAIR. IF YOU WANT THE SOURCE CODE FOR IT AND DETAILS OF IT'S MAKING VISIT THE GITHUB REPO: //
-    </footer>
-</div>
+        <main>
+            <section>
+                <h2 class="text-center fs-1">Cryptography Puzzle</h2>
+                <p class="text-center fs-4">Below are
+                    two classic cipher challenges for you to solve!</p>
+            </section>
+
+            <section class="container mt-5">
+                <div class="card bg-dark text-white p-4 mb-4">
+                    <h3>Puzzle 1: Caesar Cipher</h3>
+                    <p class="fs-5">Decode this message: <strong>CNBBALJ</strong></p>
+                    <p class="text-warning">Hint: Each letter has been shifted forward by 3 positions in the alphabet
+                        (A→D, B→E, etc.)</p>
+                    <div class="mt-3">
+                        <input type="text" id="answer1" class="form-control mb-2" placeholder="Enter your answer here">
+                        <button class="btn btn-primary" onclick="checkAnswer1()">Submit Answer</button>
+                        <p id="result1" class="mt-2 fs-5"></p>
+                    </div>
+                </div>
+
+                <div class="card bg-dark text-white p-4 mb-4">
+                    <h3>Puzzle 2: Atbash Cipher</h3>
+                    <p class="fs-5">Decode this message: <strong>QFHGRXV</strong></p>
+                    <p class="text-warning">Hint: Each letter is replaced by its reverse in the alphabet (A↔Z, B↔Y, C↔X,
+                        etc.)</p>
+                    <div class="mt-3">
+                        <input type="text" id="answer2" class="form-control mb-2" placeholder="Enter your answer here">
+                        <button class="btn btn-primary" onclick="checkAnswer2()">Submit Answer</button>
+                        <p id="result2" class="mt-2 fs-5"></p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <section>
+            <h2>Cryptography</h2>
+            <p>
+                Cryptography is the act of encrypting messages. It can be as simple as the Ceaser Cipher, where the letters simply shift by a certain number.
+                iT can also be done by wRiting yoUr seemingly normal Text in a specific way tHat can keep a message within it
+                (Were you able to find the message in the last sentence? put it in the website's URL for surprise!). </p>
+            <h2>Brief History</h2>
+            <p>Cryptography goes back thousands of years, from Egyptian hieroglyphics, to the Mesopotamians encrypting clay tablets that have intellectual property and
+                to ancient Greeks tattooing messages on a solider's head so it can only be read after his head is shaved by the recipient.
+                Humans have been using stuff to hide stuff for centuries (known as classical cryptography). Within the modern age and the dawn of the computer, encryption has become more essential and much more complicated.
+                Nowadays, it isn't a simple matter of shifting; entire algorithms are written to protect data and hide it.</p>
+            <h2>How Does It Relate To CyberSecurity?</h2>
+            <p>
+                Cryptography and encryption are essential in the field of CyberSecurity as encrypting sensitive data and recognizing the potential of hiding malicious code within seemingly normal files are a must-know for any CyberSecurity expert.
+                Malware forms such as Trojans and Ransomware rely on principles of Cryptography to hide their malware inside normal-looking files and encrypt the user's data for ransom, respectively.
+            </p>
+
+        </section>
+
+        <footer class="border-top text-center py-3 fs-6">
+            // [UNI NAME]'S CS-CS DEPARTMENT, THIS WEBSITE IS HOSTED LOCALLY AND ONLY FOR THE DURATION OF THE FAIR. IF YOU WANT
+            THE SOURCE CODE FOR IT AND DETAILS OF IT'S MAKING VISIT THE GITHUB REPO <a
+                href="https://github.com/Hamza-The-Brick/UniEventDemoWebPage">HERE</a>//
+        </footer>
+    </div>
 </div>
 </body>
 </head>
 <script>
+    function checkAnswer1() {
+        const userAnswer = document.getElementById('answer1').value.trim().toLowerCase();
+        const correctAnswer = 'freedom';
+        const resultElement = document.getElementById('result1');
 
+        if (userAnswer === correctAnswer) {
+            resultElement.textContent = '✓ Correct! The answer is FREEDOM';
+            resultElement.className = 'mt-2 fs-5 text-success';
+        } else {
+            resultElement.textContent = '✗ Incorrect. Try again! Remember to shift back by 3 positions.';
+            resultElement.className = 'mt-2 fs-5 text-danger';
+        }
+    }
 
+    function checkAnswer2() {
+        const userAnswer = document.getElementById('answer2').value.trim().toLowerCase();
+        const correctAnswer = 'justice';
+        const resultElement = document.getElementById('result2');
 
-
-
-
+        if (userAnswer === correctAnswer) {
+            resultElement.textContent = '✓ Correct! The answer is JUSTICE';
+            resultElement.className = 'mt-2 fs-5 text-success';
+        } else {
+            resultElement.textContent = '✗ Incorrect. Try again! Remember A=Z, B=Y, C=X, and so on.';
+            resultElement.className = 'mt-2 fs-5 text-danger';
+        }
+    }
 </script>
 
 
