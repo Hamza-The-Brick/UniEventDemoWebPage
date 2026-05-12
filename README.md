@@ -7,6 +7,7 @@ I am very against AI usually, but due to my limited skills in programming and on
 So I did a weird thing, I wrote my logic in Java and then had the Jetbrains AI (integrated within the InelliJ idea IDE) sort of "translate it" into javascript for me. 
 That way the code turned out to be somewhat readable, because the AI had a reference of sorts to build up on. And I got to build the website within the deadline.
 
-To Do List:
-
-1. Create custom wallpapers as rewards for those who find the hidden page.
+Update May 13th:
+It is done! but there are still a few things I want to do such as:
+1. Redo the project in React
+2. Create more mini games that cover other CyberSecurity niches.
