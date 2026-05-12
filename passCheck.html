@@ -6,6 +6,10 @@
     <title>Password Checker</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=BBH+Bartle&family=Bruno+Ace+SC&family=Science+Gothic:wght@100..900&display=swap" rel="stylesheet">
+
 </head>
 
 <body class="bg-dark" style="font-family: 'Times New Roman', 'sans-serif';">
@@ -22,21 +26,22 @@
 
 
 
-    <header>
-        <h1 class="text-center">[UNI NAME] End-Of-Year Festival</h1>
-        <h1 class="text-center">CS<span>-CS</span></h1>
-        <p class="text-center">Interactive Cybersecurity Demonstrations</p>
-    </header>
+        <header class="bbh-bartle-regular">
+            <h1 class="text-center">[Uni Name]End-Of-Year Festival</h1>
+            <h1 class="text-center">CS<span>-CS</span></h1>
+            <p class="text-center">Interactive Cybersecurity Demonstrations</p>
+        </header>
 
-    <nav class="nav justify-content-center">
-        <div class="d-flex gap-2">
-            <button class="btn btn-light btn-sm"><a href="index.html">Home</a></button>
-            <button class="btn btn-light btn-sm"><a href="passCheck.html">Password Checker</a></button>
-            <button class="btn btn-light btn-sm"><a href="phishCheck.html">Phishing Quiz</a></button>
-            <button class="btn btn-light btn-sm"><a href="cryptoPuzzle.html">Cryptography Puzzle</a></button>
-        </div>
-    </nav>
-<h1>Password Strength Checker</h1>
+        <nav class="nav justify-content-center sans-serif">
+            <div class="d-flex gap-2">
+                <button class="btn btn-light btn-sm"><a href="index.html">Home</a></button>
+                <button class="btn btn-light btn-sm"><a href="passCheck.html">Password Checker</a></button>
+                <button class="btn btn-light btn-sm"><a href="phishCheck.html">Phishing Quiz</a></button>
+                <button class="btn btn-light btn-sm"><a href="cryptoPuzzle.html">Cryptography Puzzle</a></button>
+            </div>
+        </nav>
+
+        <h1 class="science-gothic">Password Strength Checker</h1>
     <main class="container text-center mt-5">
         <label for="passwordInput" class="form-label fs-4">
             Please enter a password:
@@ -56,31 +61,31 @@
         <div id="result" class="mt-4 fs-4"></div>
     </main>
         <section>
-            <h2>How Do Hackers Crack Passwords?</h2>
-            <p>
+            <h2 class="bruno-ace-sc-regular">How Do Hackers Crack Passwords?</h2>
+            <p  class="science-gothic">
                 There are multiple ways to crack passwords. The most popular of which are the brute-force and Dictionary attacks.
                 Both of which involve a script that automates attempts, but in different ways.
 </p>
-            <h2>Brute-forcing</h2>
-            <p>
+            <h2 class="bruno-ace-sc-regular">Brute-forcing</h2>
+            <p  class="science-gothic">
                 A brute-force attack tries every possible permutation of characters (which our strength checker calculates). However, don't let the big numbers fool you.
                 Some password crackers using powerful GPUs can run 100 billion attempts at once. Making cracking passwords incredibly easy if they're not secure.
                 It is calculated by (Number Of Possible Characters) to the power of (Length Of Password). If the length of the password is variable the add each permutation (i.e., 94^8 + 94^7 + etc...).
                 Also, keep in mind that the calculated number is the worst-case scenario. So something like 1234 has many combinations, but is usually the first guess, making it even more vulnerable than you might imagine initially.
             </p>
-            <h2>Dictionary Attacks</h2>
-            <p>
+            <h2 class="bruno-ace-sc-regular">Dictionary Attacks</h2>
+            <p  class="science-gothic">
                 Dictionary attacks are similar to brute-force attacks, as a huge number of attempts are done to get the correct password. However, instead of the slow and tedious attempts of every potential combination of inputs, word lists
                 that contain common passwords and passwords found in data breaches before. Dictionary attacks are a much faster way to crack a common/easy password and do not take nearly as much time.
                 Our calculator compares your input to a select number of word lists. If your password appears even once in a word list, you know it's horrendous and can be cracked in an instant.
             </p>
-            <h2>Safety Measures You Can Take</h2>
-            <p>Always enable Multi-Factor Authentication, so even if your password gets cracked, the hacker cannot access your account. Regularly update your passwords and use strong ones with various combinations of characters to maximize the amount of time needed to crack your password.
+            <h2 class="bruno-ace-sc-regular">Safety Measures You Can Take</h2>
+            <p  class="science-gothic">Always enable Multi-Factor Authentication, so even if your password gets cracked, the hacker cannot access your account. Regularly update your passwords and use strong ones with various combinations of characters to maximize the amount of time needed to crack your password.
                 Never EVER use simple passwords and always create something complex. Password managers are also good, or just do what I do: keep them in plain text somewhere that's well hidden away from everyone else.
             </p>
         </section>
     <footer  class="border-top text-center py-3 fs-6">
-        // [UNI NAME]'S CS-CS DEPARTMENT, THIS WEBSITE IS HOSTED LOCALLY AND ONLY FOR THE DURATION OF THE FAIR. IF YOU WANT THE SOURCE CODE FOR IT AND DETAILS OF IT'S MAKING VISIT THE GITHUB REPO <a href = "https://github.com/Hamza-The-Brick/UniEventDemoWebPage">HERE</a>//
+        // [Uni Name]'S CS-CS DEPARTMENT, THIS WEBSITE IS HOSTED LOCALLY AND ONLY FOR THE DURATION OF THE FAIR. IF YOU WANT THE SOURCE CODE FOR IT AND DETAILS OF IT'S MAKING VISIT THE GITHUB REPO <a href = "https://github.com/Hamza-The-Brick/UniEventDemoWebPage">HERE</a>//
     </footer>
 </div>
 </div>
